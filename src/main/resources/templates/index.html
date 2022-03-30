@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv=”content-type” content="text/html;" />
+   
+    <title>Agenda de contatos</title>
+    <meta name="description" content="">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<link rel="stylesheet" type="text/style" href="estilos/style.css">
+
+	<!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.1/css/bootstrap.min.css}"/>
+        
+    <!-- ESTILOS PARA ESTA PÁGINA -->
+   
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- JAVASCRIPT E JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	
+	
+
+</head>
+
+<style>
+* {
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+		list-style: none;
+		box-sizing: border-box;
+	}
+
+	.container-xxl {
+		height: 100vh;
+		background: no-repeat center/cover url("https://img.elo7.com.br/product/600x380/3354FA0/agenda-2021-personalizada-capa-holografica-agenda.jpg");
+	}
+
+	.menu {
+		background: #7788;
+
+	}
+
+
+
+</style>
+
+
+		
+<body class="container-xxl"  >
+	
+<div class="container-fluid">
+	<div  class="menu" th:insert="~{/layout/navebar :: navebar}" ></div>
+	<div>
+		<div  th:if="${session.usuario} " >
+				
+			<h3 style="color: white;">Seja bem vindo!</h3><span th:text="${session.usuario.nome}" style="color: white;"></span><br />
+			<a style="border-radius: 100px; border-style: groove;" class="btn btn-primary" th:href="@{/logout}">Sair</a>
+		
+		</div>
+		<div  th:if="${session.usuario.perfil='*{admin}'}"></div> 
+		
+		
+	</div>
+	
+	<br/>
+	<br/>
+	
+	
+	<div class="font-italic">
+	<p  class="text-primary text-center"><h1 style=" color: white;">Agenda de contatos</h1></p>
+	</div>
+	<div th:if="${mensagem}" class="alert alert-sucess text-danger" role="alert">
+			
+			<h4 class="alert-heading" th:text="${mensagem}"></h4>
+	</div>
+	
+	<div class = "table-responsive">
+		<table class="table table-hover table-striped table-dark">
+		    <thead class="thead-dark">
+		      <tr >
+		        <th >Nome</th>
+		        <th >Sobrenome</th>
+		        <th >Telefone</th>
+		        <th >E-mail</th>
+		        <th >Grupos</th>
+		        <th >Ações</th> 
+		      </tr>
+		      
+		    </thead>
+		     	<tr th:each="contato : ${contatos}" th:object="${contato}" >
+			        <td th:text="*{nome}"></td>
+			        <td th:text="*{sobrenome}"></td>
+			        <td th:text="*{telefone}"></td>
+			        <td  th:text="*{email}"></td>
+			        <td >        
+				        <ul  th:each="grupo : ${contato.grupos}">
+							<li th:text="${grupo.nome}">Nome do grupo</li><br/>
+						</ul>	
+			        </td> 
+		        
+			         <td>
+			             <a th:href="@{/contato/mostrar/__*{email}__}" class= "btn btn-primary">Mostrar</a>
+			             <a th:href="@{/contato/editar/__*{email}__}" class= "btn btn-primary">Editar</a>
+			             <a th:href="@{/contato/apagar/__*{email}__}" onclick="return confirm('Tem certaza que deseja apagar este contato?') " class= "btn btn-primary">Apagar</a>
+			         </td>
+		         
+		               
+		      	</tr>
+	      
+		 </table>
+	    
+	</div>
+
+
+</div>
+</body>
+</html>

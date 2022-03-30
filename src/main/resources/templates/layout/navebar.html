@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+ 	<meta name="description" content="">
+   	<!-- <meta http-equiv="refresh" content="5"> --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.1/css/bootstrap.min.css}"/>
+        
+    <!-- ESTILOS PARA ESTA PÁGINA -->
+   
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- JAVASCRIPT E JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	
+</head>
+<style>
+	* {
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+		list-style: none;
+		box-sizing: border-box;
+	}
+	
+	
+	
+	
+</style>
+
+<body>
+	<div th:fragment="navebar" class="superior">
+		<header style="display: flex; justify-content: space-between;align-items: center;"  class="header">
+			<a class="btn btn-default"  th:href="@{/}">
+				<img style="max-height: 40px; border-radius: 100px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlAO2KctlvxFy4a7FfZY4YlbsCsYbxxTE5IQ&usqp=CAU" alt="">
+			</a>
+			<nav >
+				<ul style="display: flex; gap:1px;">
+					<li><a style="border-bottom-style: groove;" class="btn btn-primary" th:href="@{/}">Home</a></li>
+					<li><a style="border-bottom-style: groove;" class="btn btn-primary" th:href="@{/grupo/novo}">Novo grupo</a></li>
+					<li><a style="border-bottom-style: groove;" class="btn btn-primary" th:href="@{/contato/novo}">Novo Contato</a></li>
+					<li><a style="border-bottom-style: groove;" class="btn btn-primary" th:href="@{/grupo}">Lista de grupos</a></li>
+				</ul>
+			</div>
+			
+			</nav>
+			
+		</header>
+		
+		
+	</div>			
+			
+	
+
+
+
+</body>
+</html>
